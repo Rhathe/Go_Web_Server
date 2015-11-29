@@ -1,12 +1,15 @@
 package router
 
-import "net/http"
+import (
+	"controllers"
+	"net/http"
+)
 
 type Route struct {
 	Name        string
 	Method      string
 	Pattern     string
-	HandlerFunc http.HandlerFunc
+	Controller  http.HandlerFunc
 }
 
 type Routes []Route
@@ -16,6 +19,6 @@ var routes = Routes{
 		"Index",
 		"GET",
 		"/",
-		Index,
+		controllers.Index,
 	},
 }

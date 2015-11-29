@@ -1,22 +1,21 @@
 package router
 
 import (
-	"net/http"
-
 	"github.com/gorilla/mux"
+	"logger"
 )
 
 func Router() *mux.Router {
 
 	router := mux.NewRouter().StrictSlash(true)
 	for _, route := range routes {
-		handler := Logger(route.HandlerFunc, route.Name)
+		controller := logger.Logger(route.Controller, route.Name)
 
-		router
-			.Methods(route.Method)
-			.Path(route.Pattern)
-			.Name(route.Name)
-			.Handler(handler)
+		router.
+			Methods(route.Method).
+			Path(route.Pattern).
+			Name(route.Name).
+			Handler(controller)
 	}
 
 	return router
