@@ -1,10 +1,11 @@
 package controllers
 
 import (
-	"fmt"
+	"api"
 	"net/http"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Welcome!\n")
+	resp := api.NewResponse(w, r)
+	resp.JSON()
 }

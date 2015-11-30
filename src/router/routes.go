@@ -6,10 +6,10 @@ import (
 )
 
 type Route struct {
-	Name        string
-	Method      string
-	Pattern     string
-	Controller  http.HandlerFunc
+	Name       string
+	Method     string
+	Pattern    string
+	Controller http.HandlerFunc
 }
 
 type Routes []Route
