@@ -40,10 +40,6 @@ type Page struct {
 	Next       string `json:"next"`
 }
 
-func (r *Response) SetData(data interface{}) {
-	r.Data = data
-}
-
 func NewResponse(w http.ResponseWriter, r *http.Request) *Response {
 	return &Response{
 		Data: []string{},
@@ -53,6 +49,10 @@ func NewResponse(w http.ResponseWriter, r *http.Request) *Response {
 		w: w,
 		r: r,
 	}
+}
+
+func (r *Response) SetData(data interface{}) {
+	r.Data = data
 }
 
 func (r *Response) JSON() {
