@@ -3,6 +3,7 @@ package api
 import (
 	"encoding/json"
 	"net/http"
+	"net/url"
 )
 
 type Response struct {
@@ -61,4 +62,12 @@ func (r *Response) JSON() {
 	if err := json.NewEncoder(r.w).Encode(r); err != nil {
 		panic(err)
 	}
+}
+
+func (r *Response) Request() *http.Request {
+	return r.r
+}
+
+func (r *Response) URL() *url.URL {
+	return r.r.URL
 }

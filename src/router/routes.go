@@ -3,6 +3,7 @@ package router
 import (
 	"controllers"
 	"net/http"
+	"logger"
 )
 
 type Route struct {
@@ -21,4 +22,8 @@ var routes = Routes{
 		"/",
 		controllers.Index,
 	},
+}
+
+func (r Route) GetController() http.Handler {
+	return logger.Logger(r.Controller, r.Name)
 }
